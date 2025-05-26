@@ -1,46 +1,20 @@
 <script setup>
-// Sample data - replace with Euan's actual skills
-const skillCategories = [
-  {
-    id: 1,
-    name: 'Product Management',
-    skills: [
-      { name: 'Product Strategy', level: 90 },
-      { name: 'Roadmap Planning', level: 85 },
-      { name: 'User Research', level: 80 },
-      { name: 'A/B Testing', level: 75 },
-      { name: 'Product Analytics', level: 85 }
-    ]
-  },
-  {
-    id: 2,
-    name: 'Technical Skills',
-    skills: [
-      { name: 'Agile Methodologies', level: 90 },
-      { name: 'JIRA', level: 85 },
-      { name: 'SQL', level: 70 },
-      { name: 'Wireframing', level: 75 },
-      { name: 'Product Requirements', level: 95 }
-    ]
-  },
-  {
-    id: 3,
-    name: 'Soft Skills',
-    skills: [
-      { name: 'Leadership', level: 85 },
-      { name: 'Communication', level: 90 },
-      { name: 'Stakeholder Management', level: 85 },
-      { name: 'Problem Solving', level: 90 },
-      { name: 'Team Collaboration', level: 95 }
-    ]
-  }
-]
+import { skillCategories, coreCompetencies, technicalProficiencies } from '@/data/portfolioData'
 </script>
 
 <template>
   <div class="skills">
     <div class="container">
       <h1>Skills & Expertise</h1>
+      
+      <div class="core-competencies">
+        <h2>Core Competencies</h2>
+        <div class="competencies-list">
+          <span v-for="(competency, index) in coreCompetencies" :key="index" class="competency-tag">
+            {{ competency }}
+          </span>
+        </div>
+      </div>
       
       <div class="skills-container">
         <div v-for="category in skillCategories" :key="category.id" class="skill-category">
@@ -56,6 +30,16 @@ const skillCategories = [
                 <div class="skill-progress" :style="{ width: skill.level + '%' }"></div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="technical-proficiencies">
+        <h2>Technical Proficiencies</h2>
+        <div class="tech-grid">
+          <div v-for="(tech, index) in technicalProficiencies" :key="index" class="tech-item">
+            <span class="tech-name">{{ tech.name }}</span>
+            <span v-if="tech.details" class="tech-details">{{ tech.details }}</span>
           </div>
         </div>
       </div>
@@ -142,5 +126,55 @@ h2 {
   .skills-container {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.core-competencies {
+  margin-bottom: 2rem;
+  background-color: var(--color-background-soft);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.competencies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.competency-tag {
+  background-color: hsla(160, 100%, 37%, 0.1);
+  color: hsla(160, 100%, 37%, 1);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.technical-proficiencies {
+  margin-top: 2rem;
+  background-color: var(--color-background-soft);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.tech-name {
+  font-weight: 500;
+}
+
+.tech-details {
+  font-size: 0.8rem;
+  opacity: 0.7;
 }
 </style>

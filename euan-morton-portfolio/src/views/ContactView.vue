@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { contactInfo, personalInfo } from '@/data/portfolioData'
 
 const name = ref('')
 const email = ref('')
@@ -39,22 +40,27 @@ const submitForm = () => {
           
           <div class="info-item">
             <strong>Email:</strong>
-            <a href="mailto:euan.morton@example.com">euan.morton@example.com</a>
+            <a :href="`mailto:${contactInfo.email}`">{{ contactInfo.email }}</a>
           </div>
           
           <div class="info-item">
             <strong>LinkedIn:</strong>
-            <a href="https://linkedin.com/in/euanmorton" target="_blank">linkedin.com/in/euanmorton</a>
+            <a :href="contactInfo.linkedin" target="_blank">{{ contactInfo.linkedin }}</a>
           </div>
           
           <div class="info-item">
             <strong>Location:</strong>
-            <span>London, United Kingdom</span>
+            <span>{{ contactInfo.location }}</span>
+          </div>
+          
+          <div class="info-item">
+            <strong>Phone:</strong>
+            <span>{{ personalInfo.phone }}</span>
           </div>
           
           <div class="availability">
             <h3>Current Availability</h3>
-            <p>I'm currently open to new product management opportunities and consulting projects.</p>
+            <p>{{ contactInfo.availability }}</p>
           </div>
         </div>
         
@@ -236,3 +242,5 @@ input:focus, textarea:focus {
   }
 }
 </style>
+
+

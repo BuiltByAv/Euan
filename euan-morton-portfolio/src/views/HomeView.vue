@@ -1,14 +1,15 @@
 <script setup>
+import { personalInfo } from '@/data/portfolioData'
 </script>
 
 <template>
   <main>
     <section class="hero">
       <div class="container">
-        <h1>Euan Morton</h1>
-        <h2>Product Manager</h2>
+        <h1>{{ personalInfo.name }}</h1>
+        <h2>{{ personalInfo.title }}</h2>
         <p class="intro">
-          Transforming ideas into successful products through strategic vision and user-centered design.
+          {{ personalInfo.summary[0] }}
         </p>
         <div class="cta-buttons">
           <RouterLink to="/contact" class="cta-button primary">Get in Touch</RouterLink>
@@ -101,4 +102,5 @@ h2 {
   }
 }
 </style>
+
 

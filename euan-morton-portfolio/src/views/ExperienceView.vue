@@ -1,31 +1,5 @@
 <script setup>
-// Sample data - replace with Euan's actual experience
-const experiences = [
-  {
-    id: 1,
-    title: 'Senior Product Manager',
-    company: 'Company Name',
-    period: 'Jan 2021 - Present',
-    description: 'Led the development of [product/feature], resulting in [specific achievements]. Collaborated with cross-functional teams to deliver solutions that increased user engagement by X%.',
-    achievements: [
-      'Launched X new features that increased user retention by Y%',
-      'Led a team of X designers and engineers',
-      'Established product metrics and KPIs that improved decision-making'
-    ]
-  },
-  {
-    id: 2,
-    title: 'Product Manager',
-    company: 'Previous Company',
-    period: 'Mar 2018 - Dec 2020',
-    description: 'Managed the product lifecycle from conception to launch for [product]. Worked closely with engineering, design, and marketing teams to ensure alignment with business goals.',
-    achievements: [
-      'Increased product revenue by X% year-over-year',
-      'Reduced development time by implementing agile methodologies',
-      'Conducted user research that informed product roadmap'
-    ]
-  }
-]
+import { experiences, earlierRoles } from '@/data/portfolioData'
 </script>
 
 <template>
@@ -39,10 +13,10 @@ const experiences = [
             <div class="job-header">
               <h2>{{ job.title }}</h2>
               <h3>{{ job.company }}</h3>
-              <span class="period">{{ job.period }}</span>
+              <span class="period">{{ job.period }} | {{ job.location }}</span>
             </div>
             
-            <p>{{ job.description }}</p>
+            <p v-if="job.description">{{ job.description }}</p>
             
             <h4>Key Achievements:</h4>
             <ul>
@@ -51,6 +25,14 @@ const experiences = [
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+      
+      <div class="earlier-roles">
+        <h2>Earlier Roles</h2>
+        <div v-for="(role, index) in earlierRoles" :key="index" class="role-item">
+          <h3>{{ role.title }}</h3>
+          <p>{{ role.description }}</p>
         </div>
       </div>
     </div>
@@ -156,5 +138,19 @@ ul {
     background-color: hsla(160, 100%, 37%, 1);
     transform: translateX(-50%);
   }
+}
+
+.earlier-roles {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.role-item {
+  margin-bottom: 1.5rem;
+}
+
+.role-item h3 {
+  margin-bottom: 0.5rem;
 }
 </style>
