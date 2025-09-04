@@ -125,11 +125,11 @@ export const experiences = [
 export const earlierRoles = [
   {
     title: 'Business Researcher',
-    description: 'consulting on patent and market analysis for clients around the world.'
+    description: 'Consulting on patent and market analysis for clients around the world.'
   },
   {
     title: 'Web Developer',
-    description: 'working on Internal Corporate Websites, Intranets and External Client Websites at Rochester based companies including Xerox, Citibank, PaeTec Communications.'
+    description: 'Working on Internal Corporate Websites, Intranets and External Client Websites at Rochester based companies including Xerox, Citibank, PaeTec Communications.'
   }
 ]
 

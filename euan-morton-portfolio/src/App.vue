@@ -6,8 +6,10 @@ import { personalInfo } from '@/data/portfolioData'
 <template>
   <header>
     <div class="wrapper">
-      <h1 class="site-title">{{ personalInfo.name }}</h1>
-      <p class="site-subtitle">{{ personalInfo.title }}</p>
+      <div class="brand">
+        <h1 class="site-title">{{ personalInfo.name }}</h1>
+        <p class="site-subtitle">{{ personalInfo.title }}</p>
+      </div>
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
@@ -25,8 +27,11 @@ import { personalInfo } from '@/data/portfolioData'
 <style scoped>
 header {
   background-color: var(--color-background-soft);
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .wrapper {
@@ -36,19 +41,25 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+}
+
+.brand {
+  text-align: center;
 }
 
 .site-title {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   margin: 0;
   color: var(--color-heading);
 }
 
 .site-subtitle {
-  font-size: 1.2rem;
-  margin: 0.5rem 0 1.5rem;
-  opacity: 0.8;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0;
+  opacity: 0.7;
+  font-weight: 400;
 }
 
 nav {
@@ -56,15 +67,15 @@ nav {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 1rem;
 }
 
 nav a {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 nav a:hover {
@@ -80,18 +91,29 @@ nav a.router-link-active {
   .wrapper {
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
-  
-  nav {
-    margin-top: 0;
-  }
-  
-  .site-title, .site-subtitle {
+
+  .brand {
     text-align: left;
   }
-  
+
+  .site-title {
+    font-size: 2rem;
+  }
+
   .site-subtitle {
-    margin-bottom: 0;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-title {
+    font-size: 2.2rem;
+  }
+
+  .site-subtitle {
+    font-size: 1.1rem;
   }
 }
 </style>
